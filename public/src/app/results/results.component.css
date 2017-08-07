@@ -1,0 +1,47 @@
+.homeTeam {
+    display: inline-block;
+    vertical-align: top;
+    width: 175px;
+    text-align: right;
+}
+.awayTeam {
+    display: inline-block;
+    vertical-align: top;
+    width: 175px;
+    text-align: left;
+}
+.score {
+    display: inline-block;
+    vertical-align: top;
+}
+.row {
+    margin-bottom: 5px;
+    width: 470px;
+}
+.homeTeam label {
+    height: 22px; 
+    line-height: 22px; 
+    padding: 0;
+    font-weight: normal;
+}
+.score label {
+    height: 22px; 
+    line-height: 22px; 
+    padding: 0;
+    font-weight: normal;
+}
+.awayTeam label {
+    height: 22px; 
+    line-height: 22px; 
+    padding: 0;
+    font-weight: normal;
+}
+.date {
+    font-size: 7pt;
+    margin-left: 20px;
+    font-weight: normal;
+}
+.results {
+    border: 4px solid blue;
+    padding: 10px;
+}

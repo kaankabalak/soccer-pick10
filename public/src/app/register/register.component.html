@@ -1,0 +1,50 @@
+<div class="login">
+  <h1>Register</h1>
+  {{user | json}}
+  <form>
+    <div class="row">
+      <div class="left">
+        <label for="username">Username:</label>
+      </div>
+      <div class="right">
+        <input type="text" name="username" 
+        required 
+        minlength="3"
+        [(ngModel)]="user.username"
+        #usernamefield="ngModel">
+      </div>
+    </div>
+    <div class="row">
+      <div class="left">
+        <label for="password">Password:</label>
+      </div>
+      <div class="right">
+        <input type="password" name="password" 
+        required 
+        minlength="8"
+        [(ngModel)]="user.password"
+        #passwordfield="ngModel">
+      </div>
+    </div>
+    <div class="row">
+      <div class="left">
+        <label for="confirmpw">Confirm password:</label>
+      </div>
+      <div class="right">
+        <input type="password" name="confirmpw" 
+        [(ngModel)]="user.confirmpw"
+        #confirmpwfield="ngModel">
+      </div>
+      <div class='red' *ngIf='usernamefield.errors && usernamefield.dirty'>The username should be a minimum of 3 characters</div>
+      <div class='red' *ngIf='passwordfield.errors && passwordfield.dirty'>The password should be a minimum of 8 characters</div>
+      <div class='red' *ngIf='user.password != user.confirmpw && confirmpwfield.dirty'>The passwords should match</div>
+    </div>
+    <button *ngIf='(user.password == user.confirmpw) && !usernamefield.errors && !passwordfield.errors' 
+    (click)="submitForm()"
+    class="btn btn-primary active">Submit</button>
+    <button *ngIf='!(user.password == user.confirmpw) || usernamefield.errors || passwordfield.errors' 
+    (click)="submitForm()"
+    class="btn btn-primary disabled">Submit</button>
+  </form>
+  <div *ngIf='isValid==false'>{{message}}</div>
+</div>

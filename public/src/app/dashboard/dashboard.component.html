@@ -1,0 +1,42 @@
+<div class="dashboard">
+  <h4>Welcome, {{currentUser.name}}!</h4>
+  <h1>This week's matches</h1>
+  <div *ngFor='let fixture of fixtures; let i = index' class='row'>
+    <div *ngIf = 'time[i]'>
+      <label class="date">{{fixture.scheduled | date:'longDate' }}, {{fixture.scheduled | date:'shortTime' }}</label><br>
+      <div class="homeTeam">
+        <label for="home_score">{{fixture.competitors[0].name}}</label>
+      </div>
+      <div class="score">
+        <input type="number" min=0 max=9 id="home_score" name="home_score"
+        [(ngModel)]="predictions.picks[i][0]"> - 
+        <input type="number" min=0 max=9 id="away_score" name="away_score"
+        [(ngModel)]="predictions.picks[i][1]">
+      </div>
+      <div class="awayTeam">
+        <label for="away_score">{{fixture.competitors[1].name}}</label>
+      </div>
+    </div>
+    <div *ngIf = '!time[i]'>
+      <label class="disabled date">{{fixture.scheduled | date:'longDate' }}, {{fixture.scheduled | date:'shortTime' }}</label><br>
+      <div class="homeTeam">
+        <label class="disabled" for="home_score">{{fixture.competitors[0].name}}</label>
+      </div>
+      <div class="score">
+        <input type="number" min=0 id="home_score" name="home_score" disabled
+        [(ngModel)]="predictions.picks[i][0]"> <label class="disabled">-</label> 
+        <input type="number" min=0 id="away_score" name="away_score" disabled
+        [(ngModel)]="predictions.picks[i][1]">
+      </div>
+      <div class="awayTeam">
+        <label class="disabled" for="away_score">{{fixture.competitors[1].name}}</label>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class="buttons">
+      <button (click)='submitScores()'>Submit</button>
+      <button (click)='clearScores()'>Clear</button>
+    </div>
+  </div>
+</div>

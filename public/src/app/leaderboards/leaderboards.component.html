@@ -1,0 +1,15 @@
+<div class="leaderboards">
+  <h1>Leaderboards</h1>
+  <table class="table table-bordered">
+    <tr>
+      <th>Rank</th>
+      <th>User</th>
+      <th>Points</th>
+    </tr>
+    <tr *ngFor='let user of users; let i = index'>
+      <td>{{i+1}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.score}}</td>
+    </tr>
+  </table>
+</div>

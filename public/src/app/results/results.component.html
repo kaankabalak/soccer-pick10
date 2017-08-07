@@ -1,0 +1,25 @@
+<div class="results">
+  {{predictions | json}}
+  <br>
+  {{results | json}}
+  <br>
+  {{comparison | json}}
+  <h4>Welcome, {{currentUser.name}}!</h4>
+  <h1>Last week's results</h1>
+  <div *ngFor='let fixture of fixtures; let i = index' class='row'>
+    <label class="date">{{fixture.sport_event.scheduled | date:'longDate' }}, {{fixture.sport_event.scheduled | date:'shortTime' }}</label><br>
+    <div class="homeTeam">
+      <label for="home_team">{{fixture.sport_event.competitors[0].name}}</label>
+    </div>
+    <div class="score">
+      <label for="home_score">{{fixture.sport_event_status.home_score}}</label> - 
+      <label for="away_score">{{fixture.sport_event_status.away_score}}</label>
+    </div>
+    <div class="awayTeam">
+      <label for="away_team">{{fixture.sport_event.competitors[1].name}}</label>
+    </div>
+    <div *ngIf='predictions.picks.length != 0'>
+      <label class="date">Your prediction: {{fixture.sport_event.competitors[0].name}} {{predictions.picks[i][0]}} - {{predictions.picks[i][1]}} {{fixture.sport_event.competitors[1].name}}</label><br>
+    </div>
+  </div>
+</div>
